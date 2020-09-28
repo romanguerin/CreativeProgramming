@@ -1,6 +1,6 @@
 let player = {
-    v1: p.createVector(50,50),
-    d: 0,
+    v1: p.createVector(0,0),
+    d: 180,
     angle: p.createVector(0,0),
     v2: p.createVector(0,0),
     l: false, r: false,
@@ -21,6 +21,8 @@ function drawPlayer(){
     //make corners
     player.lRad = player.d -200;
     player.rRad = player.d -160;
+    player.lBack = player.d -50;
+    player.rBack = player.d +50;
 
     //draw player
     push();
@@ -30,28 +32,34 @@ function drawPlayer(){
     stroke(144, 238, 117);
     //draw radar arc
     noFill();
-    arc(player.v1.x, player.v1.y, 80, 80, radians(player.lRad), radians(player.rRad), PIE );
-    console.log(player.d);
+    arc(player.v1.x, player.v1.y, 180, 180, radians(player.lRad), radians(player.rRad), PIE );
+    //draw back arc
+    stroke(255, 100, 10);
+    arc(player.v1.x, player.v1.y, 120, 120, radians(player.lBack), radians(player.rBack), PIE );
     //target
     stroke(255,0,0);
     line(player.v1.x,player.v1.y,player.v2.x,player.v2.y,);
+    //radar
+    stroke(255,255,255,20)
+    ellipse(player.v1.x, player.v1.y,300,300);
     pop();
     //turn player
     turnPlayer();
-    //movePlayer();
+    movePlayer();
 
 }
 
 function movePlayer(){
      //let mouse = p.createVector(mouseX,mouseY);
      player.acc = p5.Vector.sub(player.v2,player.v1);
-     player.acc.setMag(0.1);
+     //1 is default
+     player.acc.setMag(1);
 
      player.vel.add(player.acc);
-     player.vel.limit(1);
+     // 2 is default
+     player.vel.limit(2);
      player.v1.add(player.vel);
 
-     //player.v1.mag(0.01);
 }
 
 function keyPressed(){

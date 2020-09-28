@@ -1,6 +1,6 @@
 let p = p5.prototype;
-let w = 640;
-let h = 480;
+let w = 820;
+let h = 600;
 
 function setup() {
   createCanvas(w,h);
@@ -16,6 +16,7 @@ function setup() {
 function draw() {
   background(0);
   drawPlayer();
+  drawEnemy();
   //drawradar and pod
   //drawRadar();
   //drawPod();
