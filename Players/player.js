@@ -15,7 +15,7 @@ function setPlayer(){
 }
 
 function drawPlayer(){
-    player.angle = p5.Vector.fromAngle(radians(player.d), 15);
+    player.angle = p5.Vector.fromAngle(radians(player.d), 25);
     player.v2 = p5.Vector.sub(player.v1,player.angle)
     //console.log(player.v1.fromAngle(radians(player.d), 15));
     //make corners
